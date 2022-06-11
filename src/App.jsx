@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "./components/layout/NavBar";
 import Users from "./components/users/Users";
+import Search from "./components/users/Search";
 import userObject from "./users";
 import "./App.css";
 import axios from "axios";
@@ -23,6 +24,7 @@ class App extends React.Component {
             <>
                 <NavBar title='Github Finder' icon='fa-brands fa-github' />
                 <div className='container'>
+                    <Search />
                     <Users users={this.state.users} loading={this.state.loading} />
                 </div>
             </>
