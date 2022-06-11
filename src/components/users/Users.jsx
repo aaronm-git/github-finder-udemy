@@ -6,6 +6,12 @@ import Spinner from "../layout/Spinner";
 const Users = ({ loading, users }) => {
     if (loading) {
         return <Spinner />;
+    } else if (!users.length) {
+        return (
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "200px" }}>
+                <p>No users found</p>
+            </div>
+        );
     } else {
         return (
             <div style={userStyle}>
