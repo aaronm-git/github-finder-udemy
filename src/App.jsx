@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import NavBar from "./components/layout/NavBar";
 import Users from "./components/users/Users";
 import Search from "./components/users/Search";
 import userObject from "./users";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Alert from "./components/layout/Alert";
+import About from "./components/pages/About";
 import "./App.css";
 import axios from "axios";
 class App extends React.Component {
@@ -48,14 +50,25 @@ class App extends React.Component {
 
     render() {
         return (
-            <>
+            <Router>
                 <NavBar title='Github Finder' icon='fa-brands fa-github' />
                 <div className='container'>
                     <Alert alert={this.state.alert} />
-                    <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} showClear={this.state.users.length > 0 ? true : false} setAlert={this.setAlert} />
-                    <Users users={this.state.users} loading={this.state.loading} />
+                    <Routes>
+                        <Route
+                            exact
+                            path='/'
+                            element={
+                                <Fragment>
+                                    <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} showClear={this.state.users.length > 0 ? true : false} setAlert={this.setAlert} />
+                                    <Users users={this.state.users} loading={this.state.loading} />
+                                </Fragment>
+                            }
+                        />
+                        <Route exact path='about' element={<About />} />
+                    </Routes>
                 </div>
-            </>
+            </Router>
         );
     }
 }
