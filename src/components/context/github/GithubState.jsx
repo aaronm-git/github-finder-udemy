@@ -30,7 +30,7 @@ const GithubSate = props => {
     // Get Repos
 
     // Clear Users
-
+    const clearUsers = () => dispatch({ type: CLEAR_USERS });
     // Set Loading
     const setLoading = () => dispatch({ type: SET_LOADING });
     return (
@@ -40,7 +40,8 @@ const GithubSate = props => {
                 user: state.user,
                 repos: state.repos,
                 loading: state.loading,
-                searchUsers
+                searchUsers,
+                clearUsers
             }}
         >
             {props.children}

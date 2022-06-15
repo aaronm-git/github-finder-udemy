@@ -33,12 +33,6 @@ const App = () => {
         setLoading(false);
     };
 
-    const clearUsers = () => {
-        console.log("Clearing Users state");
-        setUsers([]);
-        setLoading(false);
-    };
-
     const showAlert = (msg, type) => {
         setAlert({ msg, type });
         setTimeout(() => setAlert(null), 5000);
@@ -56,8 +50,8 @@ const App = () => {
                             path='/'
                             element={
                                 <Fragment>
-                                    <Search clearUsers={clearUsers} showClear={users.length > 0 ? true : false} setAlert={showAlert} />
-                                    <Users users={users} loading={loading} />
+                                    <Search setAlert={showAlert} />
+                                    <Users />
                                 </Fragment>
                             }
                         />
