@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import UserItem from "./UserItem";
-import Spinner from "../layout/Spinner";
-import GithubContext from "../context/github/githubContext";
+import React, { useContext } from 'react';
+import UserItem from './UserItem';
+import Spinner from '../layout/Spinner';
+import GithubContext from '../../context/github/githubContext';
 
 const Users = () => {
     const githubContext = useContext(GithubContext);
@@ -10,7 +10,7 @@ const Users = () => {
         return <Spinner />;
     } else if (!users.length) {
         return (
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "200px" }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '200px' }}>
                 <p>No Users Found</p>
             </div>
         );
@@ -26,9 +26,9 @@ const Users = () => {
 };
 
 const userStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gap: "1rem"
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '1rem'
 };
 
 export default Users;

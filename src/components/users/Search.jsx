@@ -1,19 +1,19 @@
-import React, { useContext, useState } from "react";
-import GithubContext from "../context/github/githubContext";
-import AlertContext from "../context/alert/alertContext";
+import React, { useContext, useState } from 'react';
+import GithubContext from '../../context/github/githubContext';
+import AlertContext from '../../context/alert/alertContext';
 
 const Search = () => {
     const githubContext = useContext(GithubContext);
     const alertContext = useContext(AlertContext);
-    const [text, setText] = useState("");
+    const [text, setText] = useState('');
 
     const onSubmit = e => {
         e.preventDefault();
-        if (text === "") {
-            alertContext.setAlert("Do not leave search field blank", "light");
+        if (text === '') {
+            alertContext.setAlert('Do not leave search field blank', 'light');
         } else {
             githubContext.searchUsers(text);
-            setText("");
+            setText('');
         }
     };
 

@@ -1,16 +1,16 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NavBar from "./components/layout/NavBar";
-import Home from "./components/pages/Home";
-import User from "./components/users/User";
-import Alert from "./components/layout/Alert";
-import About from "./components/pages/About";
-import NotFound from "./components/pages/404";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavBar from './components/layout/NavBar';
+import Home from './components/pages/Home';
+import User from './components/users/User';
+import Alert from './components/layout/Alert';
+import About from './components/pages/About';
+import NotFound from './components/pages/404';
 
-import "./App.css";
+import './App.css';
 
-import GithubSate from "./components/context/github/GithubState";
-import AlertSate from "./components/context/alert/AlertState";
+import GithubSate from './context/github/GithubState';
+import AlertSate from './context/alert/AlertState';
 
 const App = () => {
     return (

@@ -1,9 +1,9 @@
-import React, { useEffect, Fragment, useContext } from "react";
-import { useParams } from "react-router-dom";
-import Spinner from "../layout/Spinner";
-import { Link } from "react-router-dom";
-import Repos from "../repos/Repos";
-import GithubContext from "../context/github/githubContext";
+import React, { useEffect, Fragment, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import Spinner from '../layout/Spinner';
+import { Link } from 'react-router-dom';
+import Repos from '../repos/Repos';
+import GithubContext from '../../context/github/githubContext';
 
 const User = () => {
     const githubContext = useContext(GithubContext);
@@ -28,7 +28,7 @@ const User = () => {
                 Hirable: {hirable ? <i className='fas fa-check text-success' /> : <i className='fas fa-times-circle text-danger' />}
                 <div className='card grid-2'>
                     <div className='all-center'>
-                        <img src={avatar_url} alt='Github user profile' className='round-img' style={{ width: "150px" }} />
+                        <img src={avatar_url} alt='Github user profile' className='round-img' style={{ width: '150px' }} />
                         <h1>{name}</h1>
                         <p>Location: {location}</p>
                     </div>
