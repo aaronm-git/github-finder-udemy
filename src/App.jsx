@@ -6,10 +6,12 @@ import userObject from "./users";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
+import User from "./components/users/User";
 import "./App.css";
 import axios from "axios";
 class App extends React.Component {
     state = {
+        user: {},
         users: [],
         loading: false,
         alert: null
@@ -22,6 +24,15 @@ class App extends React.Component {
     //     console.log(res.data);
     //     this.setState({ users: res.data, loading: false });
     // }
+
+    getUser = async username => {
+        console.log("getUser: ", username);
+        this.setState({ loading: true });
+
+        const res = await axios.get(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+        console.log(res.data);
+        this.setState({ user: res.data, loading: false });
+    };
 
     searchUsers = async text => {
         console.log(text);
@@ -65,6 +76,7 @@ class App extends React.Component {
                                 </Fragment>
                             }
                         />
+                        <Route exact path='user/:login' element={<User getUser={this.getUser} user={this.state.user} loading={this.state.loading} />} />
                         <Route exact path='about' element={<About />} />
                     </Routes>
                 </div>
