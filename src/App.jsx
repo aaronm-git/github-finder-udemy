@@ -11,19 +11,9 @@ import "./App.css";
 import axios from "axios";
 import GithubSate from "./components/context/github/GithubState";
 const App = () => {
-    const [user, setUser] = useState({});
-    const [users, setUsers] = useState([]);
     const [repos, setRepos] = useState([]);
     const [loading, setLoading] = useState(false);
     const [alert, setAlert] = useState(null);
-
-    const getUser = async username => {
-        setLoading(true);
-        const res = await axios.get(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-        console.log(res.data);
-        setUser(res.data);
-        setLoading(false);
-    };
 
     const getUserRepos = async username => {
         setLoading(true);
@@ -55,7 +45,7 @@ const App = () => {
                                 </Fragment>
                             }
                         />
-                        <Route exact path='user/:login' element={<User getUser={getUser} getUserRepos={getUserRepos} repos={repos} user={user} loading={loading} />} />
+                        <Route exact path='user/:login' element={<User getUserRepos={getUserRepos} repos={repos} />} />
                         <Route exact path='about' element={<About />} />
                     </Routes>
                 </div>
